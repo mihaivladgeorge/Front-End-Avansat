@@ -49,7 +49,7 @@ router.get("/get/:id", async (req, res) => {
     }
 });
 
-router.get("/getall", async (req, res) => {
+router.get("/", async (req, res) => {
     const categoryQuery = req.query.category;
 
     try {
