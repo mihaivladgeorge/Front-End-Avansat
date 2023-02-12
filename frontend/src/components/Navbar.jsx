@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Search, ShoppingCartOutlined } from "@mui/icons-material"
 import Badge from '@mui/material/Badge';
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 55px;
@@ -64,16 +65,24 @@ const Navbar = () => {
             </SearchContainer>
           </Left>
           <Center>
-            <Logo>
-              CARS4FUN
-            </Logo>
+            <Link to="/" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+              <Logo>
+                CARS4FUN
+              </Logo>
+            </Link>  
           </Center>
           <Right>
-            <MenuItem>Înregistrare</MenuItem>
-            <MenuItem>Logare</MenuItem>
+            <Link to="/register" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+              <MenuItem>Înregistrare</MenuItem>
+            </Link>
+            <Link to="/login" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+              <MenuItem>Logare</MenuItem>
+            </Link>
             <MenuItem>
               <Badge color="primary">
-                <ShoppingCartOutlined color="action" />
+              <Link to="/cart" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  <ShoppingCartOutlined color="action" />
+              </Link>
               </Badge>
             </MenuItem>
           </Right>

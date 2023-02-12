@@ -3,12 +3,10 @@ import {
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { publicRequest } from "../requestMethods";
-import { useLocation } from "react-router-dom";
 import { Add, Remove } from '@mui/icons-material';
 
 const Info = styled.div`
@@ -70,13 +68,17 @@ const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
+  background-color: white;
+  margin: 10px;
+  border-radius: 50%;
+  height: 50px;
+  font-size: 20px;
 `;
 
 const Amount = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  border: 1px solid teal;
   display: flex;
   align-items: center;
   justify-content: center;

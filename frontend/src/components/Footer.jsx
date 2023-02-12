@@ -1,6 +1,7 @@
 import { FacebookTwoTone, Instagram, AssistantDirection, Phone, Mail } from '@mui/icons-material';
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -72,12 +73,36 @@ const Footer = () => {
         <Left>
         <Title>Link-uri utile</Title>
             <List>
-                <ListItem>Acasă</ListItem>
-                <ListItem>Coș de cumpărături</ListItem>
-                <ListItem>Mașini RC</ListItem>
-                <ListItem>Mașini pentru copii</ListItem>
-                <ListItem>Machete</ListItem>
-                <ListItem>Contul meu</ListItem>
+              <ListItem>
+                <Link to="/" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  Acasă
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link to="/cart" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  Coș de cumpărături
+                </Link>
+              </ListItem>  
+              <ListItem>
+                <Link to="/cars/rc" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  Mașini RC
+                </Link>
+              </ListItem>  
+              <ListItem>
+                <Link to="/cars/toy" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  Mașini pentru copii
+                </Link>
+              </ListItem>  
+              <ListItem>
+                <Link to="/cars/macheta" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  Machete
+                </Link>
+              </ListItem>  
+              <ListItem>
+                <Link to="/" style={{ textDecoration: 'none' ,color: 'inherit' }} >
+                  Contul meu
+                </Link>
+              </ListItem>
             </List>
         </Left>
         <Center>

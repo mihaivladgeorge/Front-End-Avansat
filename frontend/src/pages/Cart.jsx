@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeProduct ,reduceQuantity,addQuantity} from "../redux/cartRedux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   
@@ -169,7 +170,9 @@ const Cart = () => {
                 Coșul dumneavoastră de cumpărături
             </Title>
             <Top>
+              <Link to="/" style={{ textDecoration: 'none' ,color: 'inherit' }} >
                 <TopButton>Continuați cumpărăturile</TopButton>
+              </Link>
                 <TopTexts>
                     <TopText>Coșul de cumpărături({cart.products.length})</TopText>
                 </TopTexts>
