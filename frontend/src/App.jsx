@@ -10,6 +10,7 @@ import {
   Navigate
 } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 const App = () => {
@@ -20,7 +21,12 @@ const App = () => {
       <Route path="/" element={<Home />} />
         <Route path='/cars/:category' element={<ProductList />} />
         <Route path='/cars' element={<ProductList />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart' element={
+            <ProtectedRoute user={user}>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
         <Route path='/login' element={user ? <Navigate to="/"/> :<Login/> } />
         <Route path='/register' element={user ? <Navigate to="/"/> :<Register/> } />
       </Routes>
