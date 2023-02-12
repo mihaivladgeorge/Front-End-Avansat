@@ -3,6 +3,13 @@ import {
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+import { publicRequest } from "../requestMethods";
+import { useLocation } from "react-router-dom";
+import { Add, Remove } from '@mui/icons-material';
 
 const Info = styled.div`
   width: 100%;
@@ -59,15 +66,66 @@ const Icon = styled.div`
   }
 `;
 
+const AmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+`;
+
+const Amount = styled.span`
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
+`;
+
 
 const Product = ({item}) => {
+
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/cars/get/" + item._id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [item._id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleClick = () => {
+    dispatch(
+      addProduct({ ...product, quantity })
+    );
+  };
+
   return (
     <Container>
         <Img src={item.image}/>
         <Info>
-            <Icon>
+            <Icon onClick={handleClick}>
                 <ShoppingCartOutlined/>
             </Icon>
+            <AmountContainer>
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
+            </AmountContainer>
         </Info>
     </Container>
   )
