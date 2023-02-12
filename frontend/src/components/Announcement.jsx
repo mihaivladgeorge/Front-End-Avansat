@@ -14,7 +14,7 @@ const Container = styled.div`
 const Announcement = () => {
   return (
       <Container>
-          Reducere la comenzile de peste 200 de lei!
+          Transportul este gratuit toată săptămâna!
       </Container>
   )
 }
